@@ -24,6 +24,7 @@
   "homepage": "https://logo-2d6da.web.app",
   "proxy": "https://logo-2d6da.web.app",
   "scripts": {
+    "heroku-postbuild": "npm install",
     "start": "react-scripts start",
     "server": "node server.js",
     "build": "react-scripts build",
