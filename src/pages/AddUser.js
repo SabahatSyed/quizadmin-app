@@ -137,7 +137,7 @@ export default function AddUser() {
           <div className="mt-16 flex gap-8">
             <button
               type="button"
-              onClick={() => navigate("/users")}
+              onClick={() => navigate("/settings")}
               className="w-full px-8 py-3 rounded bg-primary-100"
             >
               Cancel

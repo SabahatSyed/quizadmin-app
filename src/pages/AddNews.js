@@ -51,9 +51,9 @@ export default function AddNews() {
         newsDate: Timestamp.fromDate(new Date(date)),
         date: new Date(),
       });
-      updateCheck();
+      //updateCheck();
       setShowModal(true);
-      navigate('/news')
+    
     } catch (error) {
       console.log(error);
     }
@@ -286,7 +286,7 @@ export default function AddNews() {
               type={"button"}
               onClick={() => {
                 setShowModal(false);
-                navigate("/news");
+                navigate("/settings");
               }}
             >
               Yes

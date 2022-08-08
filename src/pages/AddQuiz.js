@@ -40,6 +40,8 @@ export default function AddQuiz() {
       path = await getDownloadURL(appIconRef);
     }
     console.log(path);
+    console.log("rases")
+
     try {
       const res=await addDoc(collection(db, "quizes"), {
         name: quizTitle,
@@ -53,10 +55,9 @@ export default function AddQuiz() {
         answer: answer,
         date: new Date(),
       });
-      console.log("res",res)
-      updateCheck();
+      console.log("rases",res)
+      //updateCheck();
       setShowModal(true);
-      navigate('/')
     } catch (error) {
       console.log("4error",error);
     }
@@ -308,7 +309,7 @@ export default function AddQuiz() {
               type={"button"}
               onClick={() => {
                 setShowModal(false);
-                navigate("/quiz");
+                navigate("/settings");
               }}
             >
               Yes
