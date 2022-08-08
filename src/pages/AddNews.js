@@ -286,7 +286,7 @@ export default function AddNews() {
               type={"button"}
               onClick={() => {
                 setShowModal(false);
-                navigate("/settings");
+                navigate("/news");
               }}
             >
               Yes

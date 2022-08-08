@@ -309,7 +309,7 @@ export default function AddQuiz() {
               type={"button"}
               onClick={() => {
                 setShowModal(false);
-                navigate("/settings");
+                navigate("/quiz");
               }}
             >
               Yes

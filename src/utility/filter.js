@@ -37,6 +37,15 @@ export const filterBytype = (quiz, type) => {
   }
 };
 
+export const filterbySearch=(data,filter)=>{
+  data.filter(item=>{
+    console.log("dcoctor in datasearch",data);
+    return Object.keys(item).some(key=>
+        item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
+        )
+})
+}
+
 /* export const sortRows = (filteredQuizes, itemToSort, operator) => {
   operator === "descending" &&
     filteredQuizes.sort((a, b) =>

@@ -9,7 +9,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { db } from "../firebase-config";
 import { isThisMonth, isThisWeek } from "date-fns";
 import { set } from "date-fns/esm";
-import { filterByAnalytics, filterBytype, sortRows } from "../utility/filter";
+import { filterByAnalytics, filterbySearch, filterBytype, sortRows } from "../utility/filter";
 
 export default function Quiz() {
   const {
@@ -30,6 +30,13 @@ export default function Quiz() {
   const [itemToSort, setItemToSort] = useState(null);
   const [operator, setOperator] = useState(null);
   const [type, setType] = useState("All");
+  const [filter,setFilter]=useState('');
+
+    const searchtext = (event) =>{
+        setFilter(event.target.value);
+    }
+    
+    
  
   const menu = [
     { name: "Image", col: "1", isSortable: false },
@@ -47,6 +54,11 @@ export default function Quiz() {
   useEffect(() => {
     setFilteredQuizes(filterBytype(quiz, type));
   }, [type, quiz]);
+
+  useEffect(() => {
+    if(filter !== '')
+    setFilteredQuizes(filterbySearch(quiz, filter));
+  },[filter]);
 
   useEffect(() => {
     if (itemToSort !== null) {
