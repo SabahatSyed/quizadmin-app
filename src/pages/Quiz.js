@@ -56,9 +56,10 @@ export default function Quiz() {
   }, [type, quiz]);
 
   useEffect(() => {
-    if(filter !== '')
     setFilteredQuizes(filterbySearch(quiz, filter));
-  },[filter]);
+    
+  },[filter
+  ]);
 
   useEffect(() => {
     if (itemToSort !== null) {
@@ -82,8 +83,8 @@ export default function Quiz() {
               type="text"
               className="text-white py-3 pl-2 pr-8 bg-transparent w-full sm:w-fit border-t-0 border-l-0 border-r-0 border-b-2 outline-none ring-0 focus:border-b-primary-dark focus:border-b-2 focus:ring-0"
               placeholder="Search"
-              value={filterValue}
-              onChange={(e) => setFilterValue(e.target.value)}
+              value={filter}
+              onChange={searchtext.bind(this)} 
             />
             <svg
               className="object-contain w-4 h-4 absolute right-2 text-inherit "

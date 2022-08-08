@@ -64,14 +64,7 @@ export default function AddNews() {
       <section>
         <div className="mt-6 sm:mt-0 text-end">
           <form className="relative flex items-center md:flex-row w-full sm:w-fit md:space-x-3 md:space-y-0 ">
-            <input
-              required
-              type="text"
-              className="text-white py-3 pl-2 pr-8 bg-transparent w-full sm:w-fit border-t-0 border-l-0 border-r-0 border-b-2 outline-none ring-0 focus:border-b-primary-dark focus:border-b-2 focus:ring-0"
-              placeholder="Search"
-              value={filterValue}
-              onChange={(e) => setFilterValue(e.target.value)}
-            />
+            
             <svg
               className="object-contain w-4 h-4 absolute right-2 text-inherit "
               width="19"

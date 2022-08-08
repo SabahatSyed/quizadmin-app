@@ -8,7 +8,7 @@ import Select from "../components/UI/Select";
 import { useStateContext } from "../contexts/ContextProvider";
 import { db } from "../firebase-config";
 import convertDate from "../utility/convertDate";
-import { filterByAnalytics, filterBytype, sortRows } from "../utility/filter";
+import { filterByAnalytics,filterbySearch, filterBytype, sortRows } from "../utility/filter";
 import image from './images.png'
 
 export default function Users() {
@@ -23,7 +23,11 @@ export default function Users() {
   const [operator, setOperator] = useState(null);
   const [type, setType] = useState("All");
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filter,setFilter]=useState('');
 
+  const searchtext = (event) =>{
+      setFilter(event.target.value);
+  }
   const menu = [
     { name: "Image", col: "2", isSortable: false },
     { name: "Name", value: "name", col: "2", isSortable: true },
@@ -46,6 +50,13 @@ export default function Users() {
     }
   }, [itemToSort, operator,users]);
 
+  useEffect(() => {
+
+    setFilteredUsers(filterbySearch(users, filter));
+    
+    
+  },[filter]);
+
   console.log("operator",operator);
   console.log("is",itemToSort);
   console.log("FU",filteredUsers);
@@ -61,8 +72,8 @@ export default function Users() {
               type="text"
               className="text-white py-3 pl-2 pr-8 bg-transparent w-full sm:w-fit border-t-0 border-l-0 border-r-0 border-b-2 outline-none ring-0 focus:border-b-primary-dark focus:border-b-2 focus:ring-0"
               placeholder="Search"
-              value={filterValue}
-              onChange={(e) => setFilterValue(e.target.value)}
+              value={filter}
+              onChange={searchtext.bind(this)} 
             />
             <svg
               className="object-contain w-4 h-4 absolute right-2 text-inherit "

@@ -7,7 +7,7 @@ import Rating from "../components/UI/Rating";
 import Select from "../components/UI/Select";
 import { useStateContext } from "../contexts/ContextProvider";
 import { db } from "../firebase-config";
-import { filterByAnalytics, filterBytype, sortRows } from "../utility/filter";
+import { filterByAnalytics, filterBytype,filterbySearch, sortRows } from "../utility/filter";
 export default function CategoriesNews() {
   const navigate = useNavigate();
   const { quizCategories, updateCheck } = useStateContext();
@@ -20,7 +20,11 @@ export default function CategoriesNews() {
   const [operator, setOperator] = useState(null);
   const [type, setType] = useState("All");
   const [filteredquizCategories, setFilteredquizCategories] = useState([]);
+  const [filter,setFilter]=useState('');
 
+  const searchtext = (event) =>{
+      setFilter(event.target.value);
+  } 
   const menu = [
     { name: "#", col: "2", isSortable: false },
     { name: "Image", value: "name", col: "7", isSortable: true },
@@ -43,6 +47,11 @@ export default function CategoriesNews() {
     }
   }, [itemToSort, operator]);
 
+  useEffect(() => {
+    setFilteredquizCategories(filterbySearch(quizCategories, filter));
+  },[filter
+  ]);
+
   console.log(operator);
   console.log(itemToSort);
   console.log(quizCategories);
@@ -58,8 +67,8 @@ export default function CategoriesNews() {
               type="text"
               className="text-white py-3 pl-2 pr-8 bg-transparent w-full sm:w-fit border-t-0 border-l-0 border-r-0 border-b-2 outline-none ring-0 focus:border-b-primary-dark focus:border-b-2 focus:ring-0"
               placeholder="Search"
-              value={filterValue}
-              onChange={(e) => setFilterValue(e.target.value)}
+              value={filter}
+              onChange={searchtext.bind(this)} 
             />
             <svg
               className="object-contain w-4 h-4 absolute right-2 text-inherit "
