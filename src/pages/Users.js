@@ -210,7 +210,7 @@ export default function Users() {
                   </div>
                   <div className="col-span-2">{user.name}</div>
                   <p className="col-span-4 py-3 text-left">{user.email}</p>
-                  <div className="col-span-2">{convertDate(user.joinDate)}</div>
+                  <div className="col-span-2">{new Date(user.date.seconds * 1000).toISOString().slice(11, 19)}</div>
                   <button
                     onClick={() => {
                       selectedItem !== null
