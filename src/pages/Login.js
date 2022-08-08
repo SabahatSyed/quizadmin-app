@@ -30,7 +30,7 @@ const Login = () => {
       setErrorMessage("");
       if (email === "admin@gmail.com") {
         const response = await login(email, password);
-        console.log(response);
+        console.log("login",response);
         /* rememberMe &&
           localStorage.setItem(
             "user.quizapp",

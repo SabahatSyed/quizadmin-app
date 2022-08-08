@@ -42,13 +42,13 @@ export default function Users() {
     if (itemToSort !== null) {
       setFilteredUsers(sortRows(filteredUsers, itemToSort, operator));
     }
-  }, [itemToSort, operator, users]);
+  }, [itemToSort, operator,users]);
 
-  console.log(operator);
-  console.log(itemToSort);
-  console.log(filteredUsers);
-  console.log(analytics);
-  console.log(type);
+  console.log("operator",operator);
+  console.log("is",itemToSort);
+  console.log("FU",filteredUsers);
+  console.log("analytics",analytics);
+  console.log("type",type);
 
   return (
     <div className="w-full min-h-screen sm:max-w-screen-2xl px-6 sm:px-8 xl:px-0 xl:py-6 sm:mx-auto">
@@ -122,10 +122,10 @@ export default function Users() {
               </Select>
             </div>
             <button
-              onClick={() => navigate("/add-quiz")}
+              onClick={() => navigate("/add-user")}
               className="w-full sm:w-44 px-3 py-3 xl:py-2 flex items-center justify-between bg-secondary-300 rounded"
             >
-              <p className="text-sm">Add Quiz</p>
+              <p className="text-sm">Add Users</p>
               <svg
                 className="w-4 h-4 text-white"
                 viewBox="0 0 17 17"
@@ -146,6 +146,7 @@ export default function Users() {
                   className={`col-span-${item.col} flex items-center gap-2 
                   ${item.xPos ? `justify-${item.xPos}` : "justify-start"} `}
                   onClick={() => {
+                    console.log("ietmshg",item.value)
                     setItemToSort(item.value);
                     operator === null && setOperator("ascending");
                     operator === "ascending" && setOperator("descending");
@@ -244,10 +245,10 @@ export default function Users() {
                       </div>
                       <div
                         onClick={async () => {
-                          /* await deleteDoc(
+                           await deleteDoc(
                             doc(collection(db, "users"), user.id)
                           );
-                          updateCheck(); */
+                          updateCheck(); 
                         }}
                         className="flex gap-3 hover:bg-primary-200"
                       >

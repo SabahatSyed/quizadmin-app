@@ -30,7 +30,7 @@ export default function Quiz() {
   const [itemToSort, setItemToSort] = useState(null);
   const [operator, setOperator] = useState(null);
   const [type, setType] = useState("All");
-
+ 
   const menu = [
     { name: "Image", col: "1", isSortable: false },
     { name: "Title", value: "name", col: "2", isSortable: true },
@@ -254,10 +254,12 @@ export default function Quiz() {
                       </div>
                       <div
                         onClick={async () => {
-                          /* await deleteDoc(
-                            doc(collection(db, "users"), quiz.id)
+                          const res= await deleteDoc(
+                            doc(collection(db, "quizes"), quiz.id)
                           );
-                          updateCheck(); */
+                          console.log("delres",res)
+                          updateCheck(); 
+                          navigate('/quiz')
                         }}
                         className="flex gap-3 hover:bg-primary-200"
                       >

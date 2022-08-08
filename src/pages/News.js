@@ -124,10 +124,10 @@ export default function News() {
               </Select>
             </div>
             <button
-              onClick={() => navigate("/add-quiz")}
+              onClick={() => navigate("/add-news")}
               className="w-full sm:w-44 px-3 py-3 xl:py-2 flex items-center justify-between bg-secondary-300 rounded"
             >
-              <p className="text-sm">Add Quiz</p>
+              <p className="text-sm">Add News</p>
               <svg
                 className="w-4 h-4 text-white"
                 viewBox="0 0 17 17"
@@ -247,10 +247,10 @@ export default function News() {
                       </div>
                       <div
                         onClick={async () => {
-                          /* await deleteDoc(
-                            doc(collection(db, "users"), news.id)
+                           await deleteDoc(
+                            doc(collection(db, "news"), news.id)
                           );
-                          updateCheck(); */
+                          updateCheck(); 
                         }}
                         className="flex gap-3 hover:bg-primary-200"
                       >

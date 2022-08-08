@@ -13,17 +13,15 @@ const Settings = ({ rows }) => {
   const { currentUser, changePassword, changeEmail, changeProfile } = useAuth();
 
   const updateProfile = async () => {
+    
     setError("");
     try {
-      /* if (userName.length > 0) {
-        await changeProfile(userName);
+      console.log("ehksjd")
+       if (userName.length > 0) {
+        const res=await changeProfile(userName);
+        console.log("res",res)
       }
-      if (email.length > 0) {
-        await changeEmail(email);
-      }
-      if (password.length > 0) {
-        await changePassword(password);
-      } */
+      
     } catch (error) {
       console.log(error);
       setIsEditing(false);
@@ -59,6 +57,7 @@ const Settings = ({ rows }) => {
                 <Button
                   primary
                   onClick={() => {
+                    updateProfile()
                     setIsEditing(false);
                   }}
                   type={"button"}

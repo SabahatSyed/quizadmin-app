@@ -49,10 +49,11 @@ export default function AddNews() {
         category: category,
         author: author,
         newsDate: Timestamp.fromDate(new Date(date)),
-        date: Timestamp.fromDate(new Date(Date.now())),
+        date: new Date(),
       });
       updateCheck();
       setShowModal(true);
+      navigate('/news')
     } catch (error) {
       console.log(error);
     }
@@ -251,23 +252,7 @@ export default function AddNews() {
             </button>
           </div>
         </div>
-        <div className="mt-8 xl:mt-0">
-          <h3 className="font-bold">Preview of the quiz</h3>
-          <p className="text-xs text-white text-opacity-50">Live Preview</p>
-          <div className=" mt-6 p-6 sm:p-11 bg-primary-100">
-            <div className="flex justify-center">
-              <img className="object-contain " src={phone3d} alt="" />
-            </div>
-            <div className="w-full pt-14 flex justify-center gap-4">
-              <button className="w-full sm:w-fit sm:px-14 py-1 bg-secondary-300 rounded-md">
-                3d
-              </button>
-              <button className="w-full sm:w-fit sm:px-14 py-1 bg-primary-200 rounded-md">
-                2d
-              </button>
-            </div>
-          </div>
-        </div>
+        
         <div className="flex xl:hidden mt-16 mb-8 gap-8">
           <button
             type="button"
