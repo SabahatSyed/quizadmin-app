@@ -9,6 +9,8 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { db } from "../firebase-config";
 import convertDate from "../utility/convertDate";
 import { filterByAnalytics, filterBytype, sortRows } from "../utility/filter";
+import image from './images.png'
+
 export default function Users() {
   const navigate = useNavigate();
   const { users, selectItemToEdit, updateCheck } = useStateContext();
@@ -204,7 +206,7 @@ export default function Users() {
                   <div className="col-span-2 flex items-center gap-2">
                     <img
                       className="object-cover h-8 w-8 rounded-full"
-                      src={user.image}
+                      src={image}
                       alt=""
                     />
                   </div>

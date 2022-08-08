@@ -4,6 +4,7 @@ import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import { useNavigate } from "react-router-dom";
 import BackdropModal from "../components/UI/BackdropModal";
+import image from './images.png'
 import {
   addDoc,
   collection,
@@ -96,7 +97,7 @@ export default function EditUser() {
         <div className="flex-auto">
           <div className="grid grid-cols-12 gap-y-8">
             <div className="col-span-12 sm:col-span-5 sm:pb-8 sm:border-b sm:border-b-primary-100">
-              <label className="">Author</label>
+              <label className="">Username</label>
               <p className="mt-2 text-xs text-white text-opacity-50">
                 Enter the author
               </p>

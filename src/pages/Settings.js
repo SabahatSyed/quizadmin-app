@@ -21,6 +21,10 @@ const Settings = ({ rows }) => {
         const res=await changeProfile(userName);
         console.log("res",res)
       }
+      if (password.length > 0) {
+        const res=await changePassword(password);
+        console.log("res",res)
+      }
       
     } catch (error) {
       console.log(error);
@@ -168,6 +172,7 @@ const Settings = ({ rows }) => {
                     /> */}
                     </div>
                   </div>
+                  
                   <div className="mt-4 p-4 sm:flex items-center gap-4 border rounded-md border-zinc-500">
                     <p className="text-lg text-zinc-500">
                       Note: Leave the field empty that you donot wish to update.
@@ -175,6 +180,7 @@ const Settings = ({ rows }) => {
                   </div>
                 </>
               )}
+              
             </div>
           </div>
         </div>
