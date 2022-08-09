@@ -12,7 +12,8 @@ const Sidebar = (props) => {
   // const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { logout } = useAuth();
-
+  const { currentUser } = useAuth();
+  console.log("cureegy",currentUser)
   return (
     <>
       {/* Mobile Sidebar */}
@@ -356,8 +357,7 @@ const Sidebar = (props) => {
                   </div>
                   <div>
                     <p className="text-sm font-medium">
-                      {/* {currentUser?.displayName} */}
-                      Carlos Perderson
+                      {currentUser.displayName} 
                     </p>
                     <p className="text-xs text-white text-opacity-60">Admin</p>
                   </div>

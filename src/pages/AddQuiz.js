@@ -110,9 +110,9 @@ export default function AddQuiz() {
         <div className="flex-auto">
           <div className="grid grid-cols-12 gap-y-3 sm:gap-y-8">
             <div className="col-span-12 sm:col-span-5 sm:pb-8 sm:border-b sm:border-b-primary-100">
-              <label className="">Quiz Title</label>
+              <label className="">Title</label>
               <p className="mt-1 sm:mt-2 text-xs text-white text-opacity-50">
-                Enter quiz title
+                Enter title
               </p>
             </div>
             <div className="col-span-12 sm:col-span-7 pb-6 sm:pb-8 border-b border-b-primary-100">
@@ -143,9 +143,9 @@ export default function AddQuiz() {
               />
             </div>
             <div className="col-span-12 sm:col-span-5 sm:pb-8 sm:border-b sm:border-b-primary-100">
-              <label className="">Answer Text</label>
+              <label className="">Answer</label>
               <p className="mt-2 text-xs text-white text-opacity-50">
-                Enter answer text
+                Enter answer
               </p>
             </div>
             <div className="col-span-12 sm:col-span-7 pb-6 sm:pb-8 border-b border-b-primary-100">
