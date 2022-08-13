@@ -45,7 +45,7 @@ export default function CategoriesNews() {
         sortRows(filteredquizCategories, itemToSort, operator)
       );
     }
-  }, [itemToSort, operator]);
+  }, [itemToSort, operator,quizCategories]);
 
   useEffect(() => {
     setFilteredquizCategories(filterbySearch(quizCategories, filter));
@@ -115,7 +115,7 @@ export default function CategoriesNews() {
                 <option value={"This month"}>This month</option>
               </Select>
             </div>
-            <div className="mb-6 sm:mb-0 space-y-1 sm:space-y-0 sm:flex items-center gap-3">
+            <div className="mb-6 sm:mb-0 space-y-1 sm:space-y-0 sm:flex items-center gap-3" style={{marginRight:15}}>
               <label>Type:</label>
               <Select
                 value={type}
@@ -187,7 +187,7 @@ export default function CategoriesNews() {
             })}
           </div>
           <div className="xl:w-full h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-600">
-            {quizCategories.map((category) => {
+            {filteredquizCategories.map((category) => {
               return (
                 <div
                   key={category.id}

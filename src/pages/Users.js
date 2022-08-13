@@ -51,10 +51,7 @@ export default function Users() {
   }, [itemToSort, operator,users]);
 
   useEffect(() => {
-
     setFilteredUsers(filterbySearch(users, filter));
-    
-    
   },[filter]);
 
   console.log("operator",operator);
@@ -136,6 +133,7 @@ export default function Users() {
             </div>
             <button
               onClick={() => navigate("/add-user")}
+              style={{marginRight:10}}
               className="w-full sm:w-44 px-3 py-3 xl:py-2 flex items-center justify-between bg-secondary-300 rounded"
             >
               <p className="text-sm">Add Users</p>

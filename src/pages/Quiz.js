@@ -11,6 +11,160 @@ import { isThisMonth, isThisWeek } from "date-fns";
 import { set } from "date-fns/esm";
 import { filterByAnalytics, filterbySearch, filterBytype, sortRows } from "../utility/filter";
 
+/*const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 500,
+  bgcolor: "#fff",
+  boxShadow: 24,
+  p: 4,
+  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+};
+
+const columns = [
+  { field: 'Image', headerName: 'Image', flex:1 },
+  {
+    field: "Title",
+    headerName: "Title",
+    flex: 1,
+  },
+  {
+    field: "Paragraph",
+    headerName: "Paragraph",
+    flex: 1,
+  },
+  {
+    field: "Author",
+    headerName: "Author",
+    flex: 1,
+  },
+
+  {
+    field: "Action",
+    headerName: "Action",
+    flex: 3,
+    editable: false,
+    renderCell: ActionButton,
+  },
+];
+const menu = [
+    { name: "Image", col: "1", isSortable: false },
+    { name: "Title", value: "name", col: "2", isSortable: true },
+    { name: "Paragraph", value: "paragraph", col: "4", isSortable: true },
+    { name: "Author", value: "author", col: "2", isSortable: true },
+    { name: "Rating", value: "rating", col: "2", isSortable: true },
+    { name: "Action", col: "1", isSortable: false, xPos: "center" },
+  ];
+
+function ActionButton(row) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  console.log("eow",row.row)
+  const id=row.row._id;
+  const handleDelete = async (id) => {
+    await axios.delete('https://nannyapp-server.herokuapp.com/admin/deleteparent/'+id);
+  };
+  return (
+    <>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Card style={{padding:20, marginBottom:8}}>
+            <div className="row">
+            <div className="col-3">
+            <img src={row.row.image} width="100" height="50" />
+
+            </div>
+
+          <div className="col d-flex align-items-center"> 
+          <div>         
+            <h2><b>{row.row.ParentName}</b></h2>
+            <h6>{row.row.Username}</h6>
+            </div>
+          </div>
+          </div>
+          </Card>
+          <Card style={{ padding:30}}>
+            <h6><LocalPhoneIcon  style={{marginRight:10}}/>{row.row.Phone}</h6>
+            <h6><PersonIcon style={{marginRight:10}}/>{row.row.gender}</h6>
+            <h6><CalendarMonthIcon style={{marginRight:10}}/>{row.row.dob}</h6>
+            <h6><LocationOnIcon style={{marginRight:10}}/>{row.row.address.address} , {row.row.address.city}</h6>
+  </Card>
+          <Button
+        variant="contained"
+        style={{backgroundColor:"#000", color:"#fff", marginTop: 20}}
+        size="medium"
+
+        //   onClick={}
+      >
+        Edit Profile
+      </Button>
+
+
+
+
+        </Box>
+      </Modal>
+
+
+
+      <Button
+        variant="contained"
+        style={{backgroundColor:"#000", color:"#fff", marginLeft: 16}}
+        size="small"
+        onClick={() => handleDelete(id)}
+      >
+        Delete
+      </Button>
+    </>
+  );
+}
+
+export default function AllParents() {
+  const navigate=useNavigate();
+  const [posts,setPosts]=useState({});
+  const [rowws,setrowws]=useState({});
+  useEffect(()=> {
+        axios.get('https://nannyapp-server.herokuapp.com/admin/allparents')
+        .then(res => {
+            setPosts(res.data);
+            var row=[];
+           res.data.map((val, id) => {
+                row[id]={id: id+1, ParentName: val.data.fullname, Username: val.data.username, Phone:val.data.mobile,gender:val.data.gender,dob:val.data.dob,address:val.data.address,image:val.data.image,_id:val.id}
+          })
+          console.log("uajh",row)
+          setrowws(row);
+        }).catch(error=>{
+            if(error.message=="Request failed with status code 401"){
+                navigate('/Login')
+            }
+        })
+  },[])
+  return (
+    <div className="container" style={{height:700,padding:30, width: "100%"}}>
+      <h1 style={{paddingBottom: 40, textAlign:"center"}}><b>All Parents</b></h1>
+      <div>
+        <DataGrid
+          style={{ height: "70vh", width: "100%" }}
+          columns={columns}
+          rows={rowws}
+          pageSize={10}
+          rowsPerPageOptions={[5]}
+          disableSelectionOnClick
+        />
+      </div>
+    </div>
+  );
+}*/
+
 export default function Quiz() {
   const {
     quiz,
@@ -145,14 +299,16 @@ export default function Quiz() {
             </div>
             <button
               onClick={() => navigate("/add-quiz")}
+              style={{marginRight:10}}
               className="w-full sm:w-44 px-3 py-3 xl:py-2 flex items-center justify-between bg-secondary-300 rounded"
             >
-              <p className="text-sm">Add Quiz</p>
+              <p className="text-sm" >Add Quiz</p>
               <svg
                 className="w-4 h-4 text-white"
                 viewBox="0 0 17 17"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
+                
               >
                 <path d="M8.5 0C6.81886 0 5.17547 0.498516 3.77766 1.43251C2.37984 2.3665 1.29037 3.69402 0.647028 5.24719C0.00368293 6.80036 -0.164645 8.50943 0.163329 10.1583C0.491303 11.8071 1.30085 13.3217 2.4896 14.5104C3.67834 15.6991 5.1929 16.5087 6.84174 16.8367C8.49057 17.1646 10.1996 16.9963 11.7528 16.353C13.306 15.7096 14.6335 14.6202 15.5675 13.2223C16.5015 11.8245 17 10.1811 17 8.5C16.9976 6.24641 16.1013 4.08581 14.5077 2.49228C12.9142 0.898753 10.7536 0.00243743 8.5 0V0ZM8.5 15.5833C7.09905 15.5833 5.72956 15.1679 4.56471 14.3896C3.39987 13.6112 2.49198 12.505 1.95586 11.2107C1.41974 9.91636 1.27946 8.49214 1.55277 7.11811C1.82609 5.74408 2.50071 4.48195 3.49133 3.49133C4.48195 2.5007 5.74408 1.82608 7.11811 1.55277C8.49215 1.27946 9.91637 1.41973 11.2107 1.95585C12.505 2.49197 13.6113 3.39986 14.3896 4.56471C15.1679 5.72956 15.5833 7.09905 15.5833 8.5C15.5813 10.378 14.8343 12.1785 13.5064 13.5064C12.1785 14.8343 10.378 15.5813 8.5 15.5833ZM12.0417 8.5C12.0417 8.68786 11.967 8.86803 11.8342 9.00086C11.7014 9.1337 11.5212 9.20833 11.3333 9.20833H9.20834V11.3333C9.20834 11.5212 9.13371 11.7014 9.00087 11.8342C8.86803 11.967 8.68787 12.0417 8.5 12.0417C8.31214 12.0417 8.13198 11.967 7.99914 11.8342C7.8663 11.7014 7.79167 11.5212 7.79167 11.3333V9.20833H5.66667C5.47881 9.20833 5.29864 9.1337 5.1658 9.00086C5.03296 8.86803 4.95834 8.68786 4.95834 8.5C4.95834 8.31214 5.03296 8.13197 5.1658 7.99913C5.29864 7.86629 5.47881 7.79166 5.66667 7.79166H7.79167V5.66666C7.79167 5.4788 7.8663 5.29864 7.99914 5.1658C8.13198 5.03296 8.31214 4.95833 8.5 4.95833C8.68787 4.95833 8.86803 5.03296 9.00087 5.1658C9.13371 5.29864 9.20834 5.4788 9.20834 5.66666V7.79166H11.3333C11.5212 7.79166 11.7014 7.86629 11.8342 7.99913C11.967 8.13197 12.0417 8.31214 12.0417 8.5Z" />
               </svg>

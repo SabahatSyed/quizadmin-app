@@ -116,7 +116,7 @@ export default function CategoriesNews() {
                 <option value={"This month"}>This month</option>
               </Select>
             </div>
-            <div className="mb-6 sm:mb-0 space-y-1 sm:space-y-0 sm:flex items-center gap-3">
+            <div className="mb-6 sm:mb-0 space-y-1 sm:space-y-0 sm:flex items-center gap-3" style={{marginRight:15}}>
               <label>Type:</label>
               <Select
                 value={type}
@@ -124,7 +124,7 @@ export default function CategoriesNews() {
                   setType(e.target.value);
                 }}
               >
-                <option value={"All"}>All</option>
+                <option  value={"All"}>All</option>
                 {/* <option value={"This week"}>This week</option>
                 <option value={"This month"}>This month</option> */}
               </Select>
@@ -188,7 +188,7 @@ export default function CategoriesNews() {
             })}
           </div>
           <div className="xl:w-full h-[60vh] overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-600">
-            {newsCategories.map((category) => {
+            {filterednewsCategories.map((category) => {
               return (
                 <div
                   key={category.id}

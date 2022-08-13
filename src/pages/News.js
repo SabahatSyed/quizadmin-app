@@ -134,6 +134,7 @@ export default function News() {
             </div>
             <button
               onClick={() => navigate("/add-news")}
+              style={{marginRight:10}}
               className="w-full sm:w-44 px-3 py-3 xl:py-2 flex items-center justify-between bg-secondary-300 rounded"
             >
               <p className="text-sm">Add News</p>
